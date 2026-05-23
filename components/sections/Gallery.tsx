@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, useState } from "react";
 import GalleryItem from "@/components/molecules/GalleryItem";
 
 const photos = [
@@ -13,6 +16,28 @@ const photos = [
 
 export default function Gallery() {
   const duplicatedPhotos = [...photos, ...photos];
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartX(e.pageX - (scrollContainerRef.current?.offsetLeft || 0));
+    setScrollLeft(scrollContainerRef.current?.scrollLeft || 0);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - (scrollContainerRef.current?.offsetLeft || 0);
+    const walk = (x - startX) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
 
   return (
     <section id="galeria" className="py-12 pb-20 bg-[#080808] overflow-hidden">
@@ -20,8 +45,13 @@ export default function Gallery() {
         Galeria
       </div>
       <div
-        className="flex gap-3 animate-gallery-scroll"
+        ref={scrollContainerRef}
+        className={`flex gap-3 ${isDragging ? "" : "animate-gallery-scroll"} overflow-x-auto cursor-grab active:cursor-grabbing`}
         style={{ scrollbarWidth: "none" }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
       >
         {duplicatedPhotos.map((p, i) => (
           <GalleryItem key={i} {...p} />

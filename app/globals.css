@@ -101,7 +101,7 @@ body {
 .animate-grid-drift { animation: gridDrift 20s linear infinite; }
 .animate-scroll-pulse { animation: scrollPulse 2s ease-in-out infinite; }
 .animate-marquee { animation: marquee 20s linear infinite; }
-.animate-gallery-scroll { animation: gallery-scroll 40s linear infinite; }
+.animate-gallery-scroll { animation: gallery-scroll 25s linear infinite; }
 
 .hero-eyebrow { animation: fadeUp 1s 0.5s forwards; }
 .hero-title { animation: fadeUp 1.2s 0.7s forwards; }
