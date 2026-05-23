@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-[100] flex justify-between items-center px-7 py-6"
+      <nav className="fixed top-0 left-0 right-0 z-[100] flex justify-between items-center px-7 py-4 md:py-5"
         style={{ background: "linear-gradient(to bottom, rgba(8,8,8,0.95) 0%, transparent 100%)" }}
       >
         <a

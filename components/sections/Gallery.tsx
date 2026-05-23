@@ -12,16 +12,18 @@ const photos = [
 ];
 
 export default function Gallery() {
+  const duplicatedPhotos = [...photos, ...photos];
+
   return (
-    <section id="galeria" className="py-12 pb-20 bg-[#080808]">
+    <section id="galeria" className="py-12 pb-20 bg-[#080808] overflow-hidden">
       <div className="px-7 text-[0.55rem] tracking-[0.4em] uppercase text-[#8a6f45] mb-8 flex items-center gap-3 after:content-[''] after:flex-1 after:h-px after:max-w-[80px] after:bg-gradient-to-r after:from-[#8a6f45] after:to-transparent">
         Galeria
       </div>
       <div
-        className="flex gap-3 overflow-x-auto px-7 scroll-smooth"
-        style={{ scrollbarWidth: "none", scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+        className="flex gap-3 animate-gallery-scroll"
+        style={{ scrollbarWidth: "none" }}
       >
-        {photos.map((p, i) => (
+        {duplicatedPhotos.map((p, i) => (
           <GalleryItem key={i} {...p} />
         ))}
       </div>

@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative h-svh flex flex-col justify-end px-7 pb-16 overflow-hidden"
+      className="relative h-[90svh] md:h-[88svh] flex flex-col justify-end px-7 pb-12 md:pb-14 overflow-hidden"
     >
       {/* Backgrounds */}
       <div
@@ -31,7 +31,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <p className="hero-eyebrow relative z-10 opacity-0 text-[0.6rem] tracking-[0.35em] uppercase text-[#c9a96e] mb-5 flex items-center gap-3 before:content-[''] before:inline-block before:w-8 before:h-px before:bg-[#c9a96e] before:align-middle">
+      <p className="hero-eyebrow relative z-10 opacity-0 text-[0.6rem] tracking-[0.35em] uppercase text-[#c9a96e] mb-4 flex items-center gap-3 before:content-[''] before:inline-block before:w-8 before:h-px before:bg-[#c9a96e] before:align-middle">
         Fotógrafo & Videomaker
       </p>
 
